@@ -4,7 +4,7 @@ try: import pymxs
 except: print("pymxs module is available only in 3ds Max 2017+")
 
 class MAXServer(Thread):
-	def __init__(self, host='', port=1984):
+	def __init__(self, host='', port=0): # dynamically assigned port
 		Thread.__init__(self)
 		self.host = host
 		self.port = port
