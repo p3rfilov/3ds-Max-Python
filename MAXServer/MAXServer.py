@@ -44,7 +44,7 @@ class MAXServer(Thread):
 			with pymxs.mxstoken():
 				result = pymxs.runtime.execute(command)
 		except:
-			result = 'Failed to execute command!'
+			result = False
 		return result
 				
 	def stop(self):
