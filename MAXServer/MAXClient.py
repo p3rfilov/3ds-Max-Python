@@ -2,10 +2,21 @@ import socket
 import psutil
 
 class MAXClient():
+    '''
+    Local TCP Client for sending Maxscript commands to 3ds Max.
+    
+    Usage:
+    client = MAXClient()
+    activeScenes = client.getActiveScenes()
+    for port, file in activeScenes.items():
+        command = 'maxFileName' #Maxscript command
+        response = client.sendTo(file, command)
+        print(response)
+    '''
     def __init__(self, host=socket.gethostname()):
         self.host = host
         self.buffer = 2048
-        
+    
     def getActiveScenes(self):
         activeScenes = {}
         allPorts = self.get3dsMaxPorts()

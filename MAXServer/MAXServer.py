@@ -4,6 +4,12 @@ try: import pymxs
 except: print("pymxs module is available only in 3ds Max 2017+")
 
 class MAXServer(Thread):
+	'''
+    Local TCP Server for processing Maxscript commands sent from MAXClient.
+    
+    Usage:
+    Place MAXServer_Startup.ms and MAXServer.py in 3ds Max ..\scripts\Startup folder
+    '''
 	def __init__(self, host='', port=0): # dynamically assigned port
 		Thread.__init__(self)
 		self.host = host
@@ -28,7 +34,6 @@ class MAXServer(Thread):
 				connected = False
 			if connected:
 				client.setblocking(True)
-# 				client.settimeout(60)
 				command = client.recv(self.buffer).decode()
 				if command:
 					if command == 'stop':
